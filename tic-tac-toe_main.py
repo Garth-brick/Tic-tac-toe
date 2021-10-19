@@ -6,15 +6,15 @@ import sys
 from itertools import cycle
 
 
-def cleanup():
+def cleanup(): # this function will clear the output and only print the title after that
     os.system('cls')
     print("T I C   T A C   T O E\n\n")
 
 
-def clear2():
+def clear2(): # this function will clear the output and also print the title and instructions to keep playing the game after every move
     os.system('cls')
     print("""T I C   T A C   T O E\n\n\nHere is what the grid looks like:\n
-\t 1 | 2 | 3
+\t 1 | 2 | 3  # on hind-sight, I could make a for loop for printint the board instead, like I did for my Othello game later
 \t---+---+---
 \t 4 | 5 | 6
 \t---+---+---
@@ -23,7 +23,7 @@ def clear2():
 
 def check_win(board):
     winner = 0
-    for i in range(3):
+    for i in range(3): # I could make a for loop to go through thise scenarios and check for wins as well
         if board[i][0] == board[i][1] and board[i][1] == board[i][2]:
             if board[i][0] == 1 or board[i][0] == 2:
                 winner = board[i][0]
@@ -41,7 +41,7 @@ def check_win(board):
 
 def letsgo():
     global ties_wins
-    board = [[0 for i in range(3)] for i in range(3)]
+    board = [[0 for i in range(3)] for i in range(3)] # board=[[0]*3]*3 led to glitch because of shallow copying
     play = 0
     symbols = {0: " ", 1: "X", 2: "O"}
     turn_num = 0
@@ -58,7 +58,7 @@ def letsgo():
 \t---+---+---
 \t {symbols[board[2][0]]} | {symbols[board[2][1]]} | {symbols[board[2][2]]} \n""")
             play = input()
-            if str(play) in "123456789" and not(str(play) == ""):
+            if str(play) in "123456789" and not(str(play) == ""): # ask for input until valid input is given
                 if int(play) < 10 and int(play) > 0:
                     if board[(int(play)-1)//3][(int(play)-1) % 3] == 0:
                         board[(int(play)-1)//3][(int(play)-1) % 3] = i
@@ -98,7 +98,7 @@ def letsgo():
         if win != 0 or turn_num == 9:
             break
     while True:
-        again = input("\nWould you like to play again?\n(A) Yes    (B) No\n")
+        again = input("\nWould you like to play again?\n(A) Yes    (B) No\n") # ask for input until valid input is given
         if again.lower() == "a" or again.lower() == "yes":
             cleanup()
             print("Let's play again then!")
@@ -119,10 +119,11 @@ def letsgo():
             print("Invalid response, there are only two options.")
 
 
+ # START OF CODE EXECUTION
 cleanup()
 
 while True:
-    print("How many players?\n(A) 1\t(B) 2")
+    print("How many players?\n(A) 1\t(B) 2") # 
     players = input()
     if str(players) in "bB2":
         cleanup()
