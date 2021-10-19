@@ -1,6 +1,4 @@
-# You still need to make a 1 player mode
-# That will probably require having the computer look into all possible future scenarios and then decide the best one
-# Or you could make a machine learning algorithm after a few months maybe
+# I still need to make a 1 player mode
 
 import os
 from time import sleep
@@ -124,7 +122,7 @@ def letsgo():
 cleanup()
 
 while True:
-    print("How many players?\n(A) 1\t(B) 2\t(C) 3")
+    print("How many players?\n(A) 1\t(B) 2")
     players = input()
     if str(players) in "bB2":
         cleanup()
